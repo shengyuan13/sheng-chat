@@ -3,6 +3,7 @@ import firebaseApp from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from "firebase/auth";
 import LoginScreen from './Components/LoginScreen';
+import ChatRoom from './Components/ChatRoom';
 
 const auth = getAuth(firebaseApp);
 
@@ -17,11 +18,11 @@ function App() {
 
   return (
     <div className="App">
-      { !user && <LoginScreen/> }
+      { (!user && !loading) && <LoginScreen/> }
       { user && (
         <>
-          <div>Hello {user.displayName}</div>
           <button onClick={signOut}>Sign out</button>
+          <ChatRoom user={user}/>
         </>
       )}
     </div>
