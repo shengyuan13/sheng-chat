@@ -21,8 +21,13 @@ function App() {
       { (!user && !loading) && <LoginScreen/> }
       { user && (
         <>
-          <button onClick={signOut}>Sign out</button>
-          <ChatRoom user={user}/>
+          <header>
+            <h1>Hello, {user.displayName}!</h1>
+            <button className='signOut-btn' onClick={signOut}>Sign out</button>
+          </header>
+          <section>
+            <ChatRoom user={user}/>
+          </section>
         </>
       )}
     </div>
